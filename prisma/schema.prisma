@@ -8,16 +8,16 @@ datasource db {
 }
 
 model Profile {
-  id            String    @id @default(uuid())
-  userId        String    @unique
-  name          String
-  imageUrl      String    @db.Text
-  email         String    @db.Text
-  servers       Server[]
-  members       Member[]
-  channels      Channel[]
-  assignedTasks Task[]    @relation("AssignedTasks")
-  createdTasks  Task[]    @relation("CreatedTasks")
+  id       String    @id @default(uuid())
+  userId   String    @unique
+  name     String
+  imageUrl String    @db.Text
+  email    String    @db.Text
+  servers  Server[]
+  members  Member[]
+  channels Channel[]
+  assignedTasks Task[] @relation("AssignedTasks")
+  createdTasks  Task[] @relation("CreatedTasks")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -161,8 +161,8 @@ model Slate {
 }
 
 model TaskColumn {
-  id   Int    @id @default(autoincrement())
-  name String
+  id    Int @id @default(autoincrement())
+  name  String
 
   channelId String
   channel   Channel @relation(fields: [channelId], references: [id], onDelete: Cascade)
@@ -177,7 +177,7 @@ model TaskColumn {
 }
 
 model Task {
-  id          Int     @id @default(autoincrement())
+  id          String  @id @default(uuid())
   title       String
   description String?
 

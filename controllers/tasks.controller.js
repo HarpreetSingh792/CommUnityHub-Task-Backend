@@ -347,7 +347,7 @@ export const filterTask = async (req, res) => {
       const titleLower = title?.toLowerCase();
   
       // Step 1: Get all columns for the given channel
-      const columns = await prisma.column.findMany({
+      const columns = await prisma.taskColumn.findMany({
         where: { channelId },
         orderBy: { createdAt: 'asc' }, // Optional: sort by created time
       });
