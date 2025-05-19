@@ -240,11 +240,7 @@ export const calculateProgress = async (req, res) => {
       ]);
   
       const totalTasks = await prisma.task.count({
-        where: {
-          column: {
-            channelId: channelId, // Ensure this is a String, which it is
-          },
-        },
+        where: { column: { channelId } },
       });
   
       if (totalTasks === 0) {
