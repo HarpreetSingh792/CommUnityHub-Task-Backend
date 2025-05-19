@@ -22,6 +22,11 @@ app.use(cors({}))
 app.use("/taskColumn",taskColumn)
 app.use("/tasks",tasks)
 
+
+app.get("/",(req,res)=>{
+  res.status(200).send("welcome to the server")
+})
+
 app.listen(PORT, (error) => {
   if (error) {
     console.log("ERROR WHILE RUNNING TASK SERVER ------->", error);
